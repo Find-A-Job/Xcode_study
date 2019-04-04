@@ -16,9 +16,13 @@
 
 > + TabBar<br>
 > TabBarZmx *tbz=[[TabBarZmx alloc] init];//TabBarZmx是个继承自UITabBarController的自定义类<br>
-> tbz.selectedIndex=1;\t\t\t//将默认下标定位在1的位置（从0开始计数）<br>
+> tbz.selectedIndex=1;//将默认下标定位在1的位置（从0开始计数）<br>
+
+> + 文件路径<br>
+> NSString *s=[[NSBundle mainBundle] pathForResoure:@"" ofType:@""];<br>
 
 <pre>
+ 控件属性
 1、frame----------控件的位置和尺寸（以父控件的左上角为坐标原点（0,0）） 
 2、center---------控件的中点（以父控件的左上角为坐标原点）
 3、bounds---------控件的位置和尺寸（以自己的左上角为坐标原点（0,0））
