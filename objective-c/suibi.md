@@ -24,6 +24,16 @@
 [self.tableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 ```
 ### UIScrollViewDelegate代理
-+ scrollViewDidEndDecelerating,完全停止
-+ scrollViewDidEndDragging, 手指离开屏幕
-
++ 完全停止
+```
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;
+```
++ 手指离开屏幕
+```
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
+```
+### UIColor
++ 通过rgb取色
+```
+[self.view setBackgroundColor:[UIColor colorWithRed:245/255.0f green:245/255.0f blue:245/255.0f alpha:1.0f]];
+```
