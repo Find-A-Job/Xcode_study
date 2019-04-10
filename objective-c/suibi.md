@@ -1,5 +1,5 @@
-### 自定义cell
-+ 重写tableViewCell后，利用tag来调用自己在cell上新添加的控件，其中myCell是继承自UITableViewCell的自定义子类，并重写了initWithStyle方法
+### UITableView
++ 自定义cell,重写tableViewCell后，利用tag来调用自己在cell上新添加的控件，其中myCell是继承自UITableViewCell的自定义子类，并重写了initWithStyle方法
 ```
 //遵守UITableViewDelegate协议的*.m文件
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -19,3 +19,11 @@
     return cell;
 }
 ```
++ 刷新tableView
+```
+[self.tableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+```
+### UIScrollViewDelegate代理
++ scrollViewDidEndDecelerating,完全停止
++ scrollViewDidEndDragging, 手指离开屏幕
+
