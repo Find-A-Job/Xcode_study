@@ -53,6 +53,7 @@ UITableViewController *u2=[[UITableViewController alloc] init];
 ### view跳转,控制器之间的跳转
 + presentViewController、presentedViewController 、presentingViewController 、dismissViewControllerAnimated
 ```
+//如果从A跳转到B，那么
 //A.presentedViewController      就是B控制器
 //B.presentingViewController     就是A控制器
 //presentViewController          跳转
