@@ -34,6 +34,22 @@ a.datasource=self;
 [self.view addSubview:a];
 ...
 ```
++ 一个控制器添加至另一个控制器中，同时视图也要相应地加入另一个控制器的视图
+```
+//*.m
+...
+//@property(strong, nonatomic) id control1;
+//@property(strong, nonatomic) id control2;
+...
+UIViewController *u=[[UIViewController alloc] init];
+UITableViewController *u2=[[UITableViewController alloc] init];
+[u addChildViewController:u2];
+[u.view addSubview:u2.view];
+//如果还是有异常，应考虑一下对控制器赋值给属性进行强引用,避免内存提前释放
+//self.control1=u;
+//self.control2=u2;
+...
+```
 ### UIScrollViewDelegate代理
 + 完全停止
 ```
