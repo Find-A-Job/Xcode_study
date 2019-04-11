@@ -23,6 +23,17 @@
 ```
 [self.tableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 ```
++ 设置代理,代理未执行时注意检测是否赋值对应协议
+```
+//UITableView需要遵守的协议是UITableViewDelegate和UITableViewDataSource
+//ViewController.m文件
+...
+UITableView *a=[[UITable alloc] init];
+a.delegate=self;
+a.datasource=self;
+[self.view addSubview:a];
+...
+```
 ### UIScrollViewDelegate代理
 + 完全停止
 ```
