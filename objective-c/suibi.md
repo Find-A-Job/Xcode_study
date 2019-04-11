@@ -50,6 +50,27 @@ UITableViewController *u2=[[UITableViewController alloc] init];
 //self.control2=u2;
 ...
 ```
+### view跳转,控制器之间的跳转
++ presentViewController、presentedViewController 、presentingViewController 、dismissViewControllerAnimated
+```
+//A.presentedViewController      就是B控制器
+//B.presentingViewController     就是A控制器
+//presentViewController          跳转
+//dismissViewControllerAnimated  返回
+
+//*.m
+//在UIViewController控制器中
+UIViewController *view2=[[UIViewController alloc] init];
+[self presentViewController:view2 animated:YES completion:nil]; //跳转到view2视图
+
+//*.m
+//view2控制器中
+...
+//如果这个页面是由A跳转过来的，那么以下语句就会跳回A
+[self.presentingViewController dismissViewControllerAnimated:YES completion:nil]; //返回上个视图
+...
+```
+
 ### UIScrollViewDelegate代理
 + 完全停止
 ```
