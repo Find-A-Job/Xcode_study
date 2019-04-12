@@ -19,9 +19,60 @@
     return cell;
 }
 ```
-+ 刷新tableView
++ tableView常用操作
 ```
+//刷新tableView
 [self.tableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+//这句话不显示多余的单元格
+self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
+// 这句话不显示单元格之间的分割线
+_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
+// 这句话在单元格的最后显示一个箭头
+cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+//--- 点击cell的时候 cell不会产生高亮状态 ---
+cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+// --- 写在viewdidload里面cell自适应高度 ----
+tableView.rowHeight = UITableViewAutomaticDimension; // 自适应单元格高度
+tableView.estimatedRowHeight = 50; //先估计一个高度
+
+// 去掉UItableview headerview黏性(sticky)
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+CGFloat sectionHeaderHeight = 40;
+    if (scrollView.contentOffset.y<=sectionHeaderHeight&&scrollView.contentOffset.y>=0) {
+        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+    }
+    else if (scrollView.contentOffset.y>=sectionHeaderHeight) {
+        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
+    }
+}
+
+// 获取手势点击的是哪一个cell的坐标
+NSIndexPath *indexPath = [self.tableView indexPathForCell:((UITableViewCell *)longPress.view)];
+
+// 局部刷新
+//一个section刷新    
+NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:2];    
+[tableview reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];    
+
+//一个cell刷新   
+NSIndexPath *indexPath=[NSIndexPath indexPathForRow:3 inSection:0];   
+[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone]; 
+
+// 关于UITableView如何跳转到最后一行或者任意指定行。
+其实现如下：
+[self.chatTableView scrollToRowAtIndexPath:
+[NSIndexPath indexPathForRow:[self.chatArray count]-1 inSection:0] atScrollPosition: UITableViewScrollPositionBottom animated:NO];
+
+// 点击button时获取button所在的cell的indexpath
+UIButton *button = sender;
+HeroDermaTableViewCell *cell = (HeroDermaTableViewCell *)[[button superview] superview];
+NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
 ```
 + 设置代理,代理未执行时注意检测是否赋值对应协议
 ```
