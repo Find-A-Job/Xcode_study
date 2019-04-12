@@ -122,7 +122,39 @@ UIViewController *view2=[[UIViewController alloc] init];
 [self.presentingViewController dismissViewControllerAnimated:YES completion:nil]; //返回上个视图
 ...
 ```
+### UINavigationController跳转
++ 跳转发生在控制器之间，只有控制器可以进行跳转，view想要达到跳转效果只能用addSubvie进行遮盖--延伸思考，视图切换就是控制器之间的切换
+```
+//
+//1--当前页面要是想使用pushViewController，那必须以UINavigationController类型进入当前页面(view)
+//2--pushViewController跳转的前提条件是，当前的controller必须是UINavigationController
+//解释一下1和2，假设当前主页面是UITabbarController,其中一个tab是UITableViewControl
+//先将UITabbarController加入根视图控制器
+UITabbarController *utc=[[UITabbarController alloc] init];
+self.window.rootViewController = utc;
+//接着将UITableViewControl包装成UINavigationController
+UITableViewControl *table=[[UITableViewControl alloc] init];
+UINavigationController *unc=[[UINavigationController alloc] initWithRootViewController:table];
+unc.tabBarItem.title=@"123";//标签标题
+UITableViewControl *table2=[[UITableViewControl alloc] init];
+table2.tabBarItem.title=@"234";
+...
+utc.viewControllers=@[unc, table2];//①
+...
+//①的位置是重点，table和table2做对比
+//table:将UINavigationController类型的控制器加入，后续则可以使用pushViewController来跳转
+//tbale2:加入的不是UINavigationController类型，后续操作哪怕是再使用
+//UINavigationController *unc=[[UINavigationController alloc] initWithRootViewController:self];
+//或者UINavigationController *unc=[[UINavigationController alloc] initWithRootViewController:table2];
+//都是不可以使用pushViewController来跳转
 
+//跳转代码,anotherController是其他类型的控制器，只要目标是控制器类型都可以完成跳转
+[self.navigationController pushViewController:anotherController animated:true];
+
+//使用模态跳转这一步和utc.viewControllers=@[unc, table2]是一个意思
+//目标控制器是navigationController，那跳转后的这个页面就可以使用pushViewController
+[self presentViewController:utc animated:YES completion:nil];
+```
 ### UIScrollViewDelegate代理
 + 完全停止
 ```
