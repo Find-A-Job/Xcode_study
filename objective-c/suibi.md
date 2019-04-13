@@ -122,7 +122,7 @@ UIViewController *view2=[[UIViewController alloc] init];
 [self.presentingViewController dismissViewControllerAnimated:YES completion:nil]; //返回上个视图
 ...
 ```
-### UINavigationController跳转
+### UINavigationController
 + 跳转发生在控制器之间，只有控制器可以进行跳转，view想要达到跳转效果只能用addSubvie进行遮盖--延伸思考，视图切换就是控制器之间的切换
 ```
 //
@@ -154,6 +154,16 @@ utc.viewControllers=@[unc, table2];//①
 //使用模态跳转这一步和utc.viewControllers=@[unc, table2]是一个意思
 //目标控制器是navigationController，那跳转后的这个页面就可以使用pushViewController
 [self presentViewController:utc animated:YES completion:nil];
+```
++ 属性设置
+```
+//导航栏中间的title
+[self.navigationItem setTitle:@""];
+//左按钮
+UIBarButtonItem *leftButton=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:nil];
+[self.navigationItem setLeftBarButtonItem:leftButton];
+//背景色
+
 ```
 ### UIScrollViewDelegate代理
 + 完全停止
