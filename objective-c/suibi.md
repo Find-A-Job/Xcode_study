@@ -153,7 +153,7 @@ utc.viewControllers=@[unc, table2];//①
 
 //使用模态跳转这一步和utc.viewControllers=@[unc, table2]是一个意思
 //目标控制器是navigationController，那跳转后的这个页面就可以使用pushViewController
-[self presentViewController:utc animated:YES completion:nil];
+[self presentViewController:unc animated:YES completion:nil];
 ```
 + 属性设置
 ```
@@ -162,8 +162,8 @@ utc.viewControllers=@[unc, table2];//①
 //左按钮
 UIBarButtonItem *leftButton=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:nil];
 [self.navigationItem setLeftBarButtonItem:leftButton];
-//背景色
-
+//背景色,如果发现没有效果，那就‘在哪里创建了UINavagationController,就在哪里设置’
+[self.navigationBar setBarTintColor:[UIColor blackColor]];
 ```
 ### UIScrollViewDelegate代理
 + 完全停止
