@@ -179,3 +179,32 @@ UIBarButtonItem *leftButton=[[UIBarButtonItem alloc] initWithBarButtonSystemItem
 ```
 [self.view setBackgroundColor:[UIColor colorWithRed:245/255.0f green:245/255.0f blue:245/255.0f alpha:1.0f]];
 ```
+### 网络
++ NSURLSession,默认会话实现get
+```
+//url地址
+NSString *url=@"";
+//进行URL编码
+url=[url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+//创建会话对象
+NSURLRequest *request=[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+//创建默认会话对象
+NSURLSession *session=[NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+//获得数据任务
+NSURLSessionDataTask *task=[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+    //响应头在response中
+    //响应体（响应数据）在data中
+    //如果JSON之类的数据就需要转码
+    //[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments]
+    if(!error)
+    {
+        //未发生错误
+    }
+}];
+//任务创建完成后默认是不执行的，需要显式调用执行任务
+[task resume]
+```
++ 从网络获取图片资源
+```
+[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@""]]];
+```
