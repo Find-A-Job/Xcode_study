@@ -174,6 +174,12 @@ UIBarButtonItem *leftButton=[[UIBarButtonItem alloc] initWithBarButtonSystemItem
 ```
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
 ```
+### UISearchBar
++ 搜索框，很容易发生被状态栏和导航栏遮挡的问题，要注意position
+```
+UISearchBar *search=[[UISearch alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+[search setSearchBarStyle:UISearchBarStyleMinimal];//背景透明
+```
 ### UIColor
 + 通过rgb取色
 ```
