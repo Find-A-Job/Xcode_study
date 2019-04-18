@@ -214,3 +214,9 @@ NSURLSessionDataTask *task=[session dataTaskWithRequest:request completionHandle
 ```
 [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@""]]];
 ```
+### UIScrollView
++ 滚动条
+```
+[self setShowsVerticalScrollIndicator:NO];//隐藏右侧滚动条
+[self setShowsHorizontalScrollIndicator:NO];//隐藏底侧滚动条
+```
