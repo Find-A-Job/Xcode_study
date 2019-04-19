@@ -243,28 +243,28 @@ if([UIApplication sharedApplication].applicationState ==UIApplicationStateInacti
 //在map上显示一个地址，其实就是利用了openURL这个方法 
 NSString* addressText =@"1 Infinite Loop, Cupertino, CA 95014"; 
 // URL encode the spaces 
-addressText = [addressTextstringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]; 
-NSString* urlText = [NSStringstringWithFormat:@"http://maps.google.com/maps?q=%@", addressText]; 
-[[UIApplication sharedApplication]openURL:[NSURLURLWithString:urlText]]; 
+addressText = [addressText stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]; 
+NSString* urlText = [NSString stringWithFormat:@"http://maps.google.com/maps?q=%@", addressText]; 
+[[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlText]]; 
 
 //发送电子邮件，也是利用openURL 
 NSString *recipients =@"mailto:first@example.com?cc=second@example.com,third@example.com&subject=Hello from California!";
 NSString *body =@"&body=It is raining in sunny California!";
-NSString *email = [NSStringstringWithFormat:@"%@%@", recipients, body]; 
-email = [emailstringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-[[UIApplication sharedApplication]openURL:[NSURLURLWithString:email]]; 
+NSString *email = [NSString stringWithFormat:@"%@%@", recipients, body]; 
+email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+[[UIApplication sharedApplication] openURL:[NSURLURLWithString:email]]; 
 
 //打电话到一个号码，依然是利用openURL 
 // Call Google 411 
-[[UIApplication sharedApplication]openURL:[NSURLURLWithString:@"tel://8004664411"]]; 
+[[UIApplication sharedApplication] openURL:[NSURLURLWithString:@"tel://8004664411"]]; 
 
 //发送短信，万能的openURL啊 
 // Text to Google SMS 
-[[UIApplication sharedApplication]openURL:[NSURLURLWithString:@"sms://466453"]]; 
+[[UIApplication sharedApplication] openURL:[NSURLURLWithString:@"sms://466453"]]; 
 
 //打开一个网址，openURL的常规操作 
 // Lanuch any iPhone developers fav site 
-[[UIApplication sharedApplication]openURL:[NSURLURLWithString:@"http://itunesconnect.apple.com"]];
+[[UIApplication sharedApplication] openURL:[NSURLURLWithString:@"http://itunesconnect.apple.com"]];
 --------------------- 
 原文：https://blog.csdn.net/youshaoduo/article/details/86645502 
 ```
