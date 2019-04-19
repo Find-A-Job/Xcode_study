@@ -250,7 +250,8 @@ NSString* urlText = [NSStringstringWithFormat:@"http://maps.google.com/maps?q=%@
 //发送电子邮件，也是利用openURL 
 NSString *recipients =@"mailto:first@example.com?cc=second@example.com,third@example.com&subject=Hello from California!";
 NSString *body =@"&body=It is raining in sunny California!";
-NSString *email = [NSStringstringWithFormat:@"%@%@", recipients, body]; email = [emailstringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+NSString *email = [NSStringstringWithFormat:@"%@%@", recipients, body]; 
+email = [emailstringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 [[UIApplication sharedApplication]openURL:[NSURLURLWithString:email]]; 
 
 //打电话到一个号码，依然是利用openURL 
