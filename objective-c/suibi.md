@@ -220,3 +220,50 @@ NSURLSessionDataTask *task=[session dataTaskWithRequest:request completionHandle
 [self setShowsVerticalScrollIndicator:NO];//隐藏右侧滚动条
 [self setShowsHorizontalScrollIndicator:NO];//隐藏底侧滚动条
 ```
+### 强大的UIApplication
++ 
+```
+//设置icon上的数字 ,iOS 8之后需要注册‘推送功能’
+[UIApplication sharedApplication].applicationIconBadgeNumber = 4; 
+
+//设置摇动手势的时候，是否支持redo,undo操作 
+[UIApplication sharedApplication].applicationSupportsShakeToEdit =YES; 
+
+//判断程序运行状态 
+/* UIApplicationStateActive UIApplicationStateInactive UIApplicationStateBackground */ 
+if([UIApplication sharedApplication].applicationState ==UIApplicationStateInactive)
+{ NSLog(@"程序在运行状态"); } 
+
+//阻止屏幕变暗进入休眠状态 
+[UIApplication sharedApplication].idleTimerDisabled =YES; 
+
+//显示联网状态 
+[UIApplication sharedApplication].networkActivityIndicatorVisible =YES; 
+
+//在map上显示一个地址，其实就是利用了openURL这个方法 
+NSString* addressText =@"1 Infinite Loop, Cupertino, CA 95014"; 
+// URL encode the spaces 
+addressText = [addressTextstringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]; 
+NSString* urlText = [NSStringstringWithFormat:@"http://maps.google.com/maps?q=%@", addressText]; 
+[[UIApplication sharedApplication]openURL:[NSURLURLWithString:urlText]]; 
+
+//发送电子邮件，也是利用openURL 
+NSString *recipients =@"mailto:first@example.com?cc=second@example.com,third@example.com&subject=Hello from California!";
+NSString *body =@"&body=It is raining in sunny California!";
+NSString *email = [NSStringstringWithFormat:@"%@%@", recipients, body]; email = [emailstringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+[[UIApplication sharedApplication]openURL:[NSURLURLWithString:email]]; 
+
+//打电话到一个号码，依然是利用openURL 
+// Call Google 411 
+[[UIApplication sharedApplication]openURL:[NSURLURLWithString:@"tel://8004664411"]]; 
+
+//发送短信，万能的openURL啊 
+// Text to Google SMS 
+[[UIApplication sharedApplication]openURL:[NSURLURLWithString:@"sms://466453"]]; 
+
+//打开一个网址，openURL的常规操作 
+// Lanuch any iPhone developers fav site 
+[[UIApplication sharedApplication]openURL:[NSURLURLWithString:@"http://itunesconnect.apple.com"]];
+--------------------- 
+原文：https://blog.csdn.net/youshaoduo/article/details/86645502 
+```
