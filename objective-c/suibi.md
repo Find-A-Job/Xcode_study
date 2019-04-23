@@ -174,6 +174,29 @@ UIBarButtonItem *leftButton=[[UIBarButtonItem alloc] initWithBarButtonSystemItem
 ```
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
 ```
+### UITextfield
++ 键盘， 键盘上面有个放候选字的框，高度未知（暂时没找到相关的解释， 试了一下差不多是64）
+```
+//键盘事件
+-(void)keyboardUp:(NSNotification *)sender;
+-(void)keyboardDown:(NSNotification *)sender;
+
+//注册键盘事件进行监听
+//keyboardUp:和keyboardDown:是自定义的函数
+[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardUp:) name:UIKeyboardWillShowNotification object:nil];
+[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDown:) name:UIKeyboardWillHideNotification object:nil];
+
+//键盘弹起时，获取键盘高度，调整textfiled高度， 显示
+//self.tfEditBox是个UITextfield类型控件
+-(void)keyboardUp:(NSNotification *)sender{
+    NSValue *keyboard=[(NSDictionary *)[sender userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey];
+    
+    if ([sender.name isEqualToString:UIKeyboardWillShowNotification]) {
+        CGRect keyboardRect=[keyboard CGRectValue];
+        [self.tfEditBox setCenter:CGPointMake(keyboardRect.size.width/2.0f, keyboardRect.origin.y-self.tfEditBox.bounds.size.height/2.0f-64)];
+    }
+}
+```
 ### UISearchBar
 + 搜索框，很容易发生被状态栏和导航栏遮挡的问题，要注意position
 ```
