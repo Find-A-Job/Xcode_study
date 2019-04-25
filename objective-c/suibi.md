@@ -243,6 +243,14 @@ NSURLSessionDataTask *task=[session dataTaskWithRequest:request completionHandle
 [self setShowsVerticalScrollIndicator:NO];//隐藏右侧滚动条
 [self setShowsHorizontalScrollIndicator:NO];//隐藏底侧滚动条
 ```
+### UIImage
++ 设置图片9宫格拉伸stretchableImageWithLeftCapWidth
+```
+//两个参数用来指定不需要拉伸的边缘范围
+UIImage *uimg=[UIImage imageNamed:@"xiaoxikuang.png"];
+UIImageView *bkView=[[UIImageView alloc] initWithImage:[uimg stretchableImageWithLeftCapWidth:uimg.size.width*0.3 topCapHeight:uimg.size.height*0.3]];
+[self setBackgroundView:bkView];
+```
 ### 强大的UIApplication
 + 
 ```
