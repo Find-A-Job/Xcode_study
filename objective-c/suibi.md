@@ -174,6 +174,13 @@ UIBarButtonItem *leftButton=[[UIBarButtonItem alloc] initWithBarButtonSystemItem
 ```
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
 ```
+### UIScrollView
++ 当有一部分被遮挡，滑不出来的时候，试试增加额外滚动区域
+```
+// 增加额外的滚动区域（逆时针，上、左、下、右）
+// top  left  bottom  right
+scrollView.contentInset = UIEdgeInsetsMake(20, 20, 20, 20);
+```
 ### UITextfield
 + 键盘， 键盘上面有个放候选字的框，高度未知（暂时没找到相关的解释， 试了一下差不多是64）
 ```
