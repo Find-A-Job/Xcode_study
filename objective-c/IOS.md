@@ -36,3 +36,18 @@
 11、contendMode---内容显示的模式，拉伸自适应
 12、hidden--------是否隐藏（YES、NO）
 </pre>
+
+<pre>
+注销监听事件,一种是在view隐藏时注销，另一种是在程序进入后台时注销
+```
+-(void)applicationDidEnterBackground:(UIApplication *)application {}
+-(void)applicationWillEnterForeground:(UIApplication *)application {}
+-(void)applicationDidBecomeActive:(UIApplication *)application {}
+-(void)applicationWillTerminate:(UIApplication *)application {}
+-(void)viewWillDisappear:(BOOL)animated {}
+-(void)viewDidDisappear:(BOOL)animated {}
+-(void)viewWillAppear:(BOOL)animated {}
+-(void)viewDidAppear:(BOOL)animated {}
+
+```
+</pre>
