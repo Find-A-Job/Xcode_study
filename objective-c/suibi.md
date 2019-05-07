@@ -254,9 +254,13 @@ NSURLSessionDataTask *task=[session dataTaskWithRequest:request completionHandle
 + 设置图片9宫格拉伸stretchableImageWithLeftCapWidth
 ```
 //两个参数用来指定不需要拉伸的边缘范围
+UIView *bkView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 375, 667)];
 UIImage *uimg=[UIImage imageNamed:@"xiaoxikuang.png"];
-UIImageView *bkView=[[UIImageView alloc] initWithImage:[uimg stretchableImageWithLeftCapWidth:uimg.size.width*0.3 topCapHeight:uimg.size.height*0.3]];
-[self setBackgroundView:bkView];
+uimg=[uimg stretchableImageWithLeftCapWidth:uimg.size.width*0.3 topCapHeight:uimg.size.height*0.3]; 
+UIImageView *bkImgView=[[UIImageView alloc] initWithFrame:bkView.bounds];
+bkImgView.image=uimg;
+[bkView addSubview:bkImgView];
+//参考自：https://blog.csdn.net/zsk_zane/article/details/46915931
 ```
 ### 强大的UIApplication
 + 
