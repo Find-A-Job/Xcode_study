@@ -310,3 +310,33 @@ email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 --------------------- 
 原文：https://blog.csdn.net/youshaoduo/article/details/86645502 
 ```
+### 访问本地
++ 访问相册
+```
+//从本地相册选择图片
+//遵守UIImagePickerControllerDelegate, UINavigationControllerDelegate协议
+-(void)chooseImgClick:(id)sender{
+    //访问相册
+    
+    NSUInteger sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
+    UIImagePickerController *imgPicker=[[UIImagePickerController alloc] init];
+    imgPicker.sourceType=sourceType;
+    imgPicker.delegate=self;//协议代理
+    
+    [self presentViewController:imgPicker animated:YES completion:nil];
+}
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    //取消时
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info{
+    NSLog(@"选择图片");
+    
+    UIImage *image=[info objectForKey:UIImagePickerControllerOriginalImage];
+    [self.imgBtn setBackgroundImage:image forState:UIControlStateNormal];//imgBtn是一个按钮
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+```
+
