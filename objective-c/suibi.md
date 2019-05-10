@@ -310,6 +310,28 @@ email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 --------------------- 
 原文：https://blog.csdn.net/youshaoduo/article/details/86645502 
 ```
+### e
++ hittest
+```
+//子视图的frame超出父视图frame，子视图会显示，但无法接收响应
+
+// 在view中重写以下方法，其中self.button就是那个希望被触发点击事件的按钮
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    UIView *view = [super hitTest:point withEvent:event];
+    
+    //超出父视图范围，会返回nil，捕捉这个返回值
+    if (view == nil) {
+        // 转换坐标系
+        CGPoint newPoint = [self.button convertPoint:point fromView:self];
+        // 判断触摸点是否在button上
+        if (CGRectContainsPoint(self.button.bounds, newPoint)) {
+            view = self.deleteButton;
+        }
+    }
+    return view;
+}
+
+```
 ### 访问本地
 + 访问相册
 ```
