@@ -30,11 +30,18 @@ self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 // 这句话不显示单元格之间的分割线
 _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
+//设置分割线长度，颜色
+table.separatorInset=UIEdgeInsetsMake(0, 0, 0, 0);//上，左，下，右，都是正数
+table.separatorColor=[UIColor blueColor];
+
 // 这句话在单元格的最后显示一个箭头
 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
 //--- 点击cell的时候 cell不会产生高亮状态 ---
 cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+//设置cell背景透明
+cell.backgroundColor=[UIColor clearColor];
 
 // --- 写在viewdidload里面cell自适应高度 ----
 tableView.rowHeight = UITableViewAutomaticDimension; // 自适应单元格高度
