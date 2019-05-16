@@ -371,4 +371,9 @@ email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
 ```
+### 随意粘贴
++ 属性
+```
+[sortType setTitleTextAttributes:[[NSDictionary alloc] initWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
+```
 
