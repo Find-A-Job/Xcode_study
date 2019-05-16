@@ -139,6 +139,7 @@ UIViewController *view2=[[UIViewController alloc] init];
 //先将UITabbarController加入根视图控制器
 UITabbarController *utc=[[UITabbarController alloc] init];
 self.window.rootViewController = utc;
+
 //接着将UITableViewControl包装成UINavigationController
 UITableViewControl *table=[[UITableViewControl alloc] init];
 UINavigationController *unc=[[UINavigationController alloc] initWithRootViewController:table];
@@ -157,6 +158,8 @@ utc.viewControllers=@[unc, table2];//①
 
 //跳转代码,anotherController是其他类型的控制器，只要目标是控制器类型都可以完成跳转
 [self.navigationController pushViewController:anotherController animated:true];
+//用hidesBottomBarWhenPushed属性设置隐藏tabbar
+n.hidesBottomBarWhenPushed = YES;
 
 //使用模态跳转这一步和utc.viewControllers=@[unc, table2]是一个意思
 //目标控制器是navigationController，那跳转后的这个页面就可以使用pushViewController
