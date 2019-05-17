@@ -386,4 +386,67 @@ email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //警告
 #warning "msg"
 ```
++ hittest
+```
+#pragma mark - hittest
+
+//还需要传递给子视图时，return [popView hitTest:popViewPoint withEvent:event];
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    
+    if (self.isHidden == NO) {
+        
+        UIView *popView=(UIView *)[self viewWithTag:222];
+        
+        CGPoint newPoint = [self convertPoint:point toView:self.centerBtn];
+        CGPoint popViewPoint = [self convertPoint:point toView:popView];
+        
+        if ( [self.centerBtn pointInside:newPoint withEvent:event]) {
+            return self.centerBtn;
+        }
+        else if ([popView pointInside:popViewPoint withEvent:event])
+        {
+            return [popView hitTest:popViewPoint withEvent:event];
+        }
+        else{
+            
+            return [super hitTest:point withEvent:event];
+        }
+    }
+    
+    else {
+        return [super hitTest:point withEvent:event];
+    }
+}
+
+//最终返回值是某个视图
+-(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+    if (self.isHidden == NO) {
+        UIView *fbswView=(UIView *)[self viewWithTag:45];
+        UIView *fbzlView=(UIView *)[self viewWithTag:46];
+
+
+        CGPoint fbswPoint = [self convertPoint:point toView:fbswView];
+        CGPoint fbzlPoint = [self convertPoint:point toView:fbzlView];
+
+
+        if ( [fbswView pointInside:fbswPoint withEvent:event]) {
+            return fbswView;
+        }
+        else if ( [fbzlView pointInside:fbzlPoint withEvent:event]) {
+            return fbzlView;
+        }
+        else{
+
+
+            return [super hitTest:point withEvent:event];
+        }
+    }
+
+
+    else {
+        return [super hitTest:point withEvent:event];
+    }
+}
+```
+
 
