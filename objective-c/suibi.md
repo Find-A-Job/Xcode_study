@@ -388,6 +388,8 @@ email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 ```
 + hittest
 ```
+
+//参考https://www.linuxidc.com/Linux/2015-08/121270.htm
 #pragma mark - hittest
 
 //还需要传递给子视图时，return [popView hitTest:popViewPoint withEvent:event];
