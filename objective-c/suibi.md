@@ -378,7 +378,7 @@ email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 ```
 + 标签警示
 ```
-//条目分段（不知道怎么称呼，暂称为条目）
+//条目分段（xcode编辑器上方文件目录，最后一个条目，点击一下会显示，不知道怎么称呼，暂称为条目）
 #pragma mark - UITableViewDataSources
 //条目不分段
 #pragma mark  UITableViewDataSources
