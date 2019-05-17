@@ -376,4 +376,14 @@ email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 ```
 [sortType setTitleTextAttributes:[[NSDictionary alloc] initWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
 ```
++ 标签警示
+```
+//条目分段（不知道怎么称呼，暂称为条目）
+#pragma mark - UITableViewDataSources
+//条目不分段
+#pragma mark  UITableViewDataSources
+
+//警告
+#warning "msg"
+```
 
