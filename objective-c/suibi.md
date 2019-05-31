@@ -450,5 +450,13 @@ email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }
 }
 ```
++ 遮罩
+```
+//在任何视图下执行这个，添加视图到Z轴最顶层,maksView
+UIView *maksView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+maksView.backgroundColor = [UIColor blackColor];
+maksView.alpha = 0.6;
+[[UIApplication sharedApplication].keyWindow addSubview:maskView];
+```
 
 
