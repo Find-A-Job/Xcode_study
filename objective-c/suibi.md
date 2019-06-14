@@ -458,5 +458,32 @@ maksView.backgroundColor = [UIColor blackColor];
 maksView.alpha = 0.6;
 [[UIApplication sharedApplication].keyWindow addSubview:maskView];
 ```
-
++ 判断 点位置，尺寸大小，矩形大小，点与矩形的位置
+```
+// 1.判断两个点的位置是否相等
+    BOOL pointIsEqual = CGPointEqualToPoint(CGPointMake(50, 100), CGPointMake(100, 50));
+    NSLog(@"%d",pointIsEqual);
+    
+    // 2.判断尺寸大小是否相等
+    BOOL sizeIsEqual = CGSizeEqualToSize(CGSizeMake(50, 100), CGSizeMake(50, 100));
+    NSLog(@"%d",sizeIsEqual);
+    
+    
+    // 第一种写法：坐标为(20,20)宽高分别为50和100
+    CGRect rect1 = {{20,50},{50,100}};
+    // 第二种写法：坐标为(20,20)宽高分别为50和100
+    NSPoint point = CGPointMake(20, 20);
+    NSSize size = CGSizeMake(50, 100);
+    CGRect rect2  = {point,size};
+    
+    
+    // 3.判断两个矩形是否相等
+    BOOL rectIsEqual = CGRectEqualToRect(rect1, rect2);
+    NSLog(@"%d",rectIsEqual);
+    
+    
+    // 4.判断一个点是否在矩形上面
+    BOOL isContent = CGRectContainsPoint(rect1, CGPointMake(20, 50));
+    NSLog(@"%d",isContent);
+```
 
