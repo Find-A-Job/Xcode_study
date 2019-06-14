@@ -486,4 +486,32 @@ maksView.alpha = 0.6;
     BOOL isContent = CGRectContainsPoint(rect1, CGPointMake(20, 50));
     NSLog(@"%d",isContent);
 ```
++ 字符操作
+```
+    //////////////////////////////////////////////////////begin
+    
+    NSString *longString=@"今天我们来学习NSCharacterSet我们快乐";
+    
+    //自己一个一个筛选
+    NSString *se=@"今我s";
+    NSMutableString *muString=[[NSMutableString alloc] init];
+    for (int i=0; i<longString.length; ++i) {
+        NSString *temp=[longString substringWithRange:NSMakeRange(i, 1)];//取出一个字符
+        if (![se containsString:temp]) {//判断是否包含关系
+            [muString appendString:temp];
+        }
+        [se containsString:se];
+    }
+    NSLog(@"完成后:%@", muString);
+    //完成后:天们来学习NSCharacterSet们快乐
+    
+    //用characterset
+    NSCharacterSet *cs=[NSCharacterSet characterSetWithCharactersInString:@"今我s"];//分离标准，分离条件
+    NSArray *arr23=[longString componentsSeparatedByCharactersInSet:cs];//分离器，分离字符。分离后的数组，其中的分离规律暂不清楚
+    NSString *ressss=[arr23 componentsJoinedByString:@""];//替换，或者说拼接
+    NSLog(@"完成后:%@", ressss);
+    //完成后:天们来学习NSCharacterSet们快乐
+    
+    //////////////////////////////////////////////////////end
+```
 
