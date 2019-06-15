@@ -270,6 +270,12 @@ scrollView.contentInset = UIEdgeInsetsMake(20, 20, 20, 20);
     return result;
 }
 ```
++ 设置输入框为密码模式
+```
+//设置完成后，键盘会自动限制为只能输入数字·字母·特殊字符，输入的字符在展示的时候会用圆点代替
+UITextField *ut=[[UITextField alloc] init];
+ut.secureTextEntry=YES;
+```
 ### UISearchBar
 + 搜索框，很容易发生被状态栏和导航栏遮挡的问题，要注意position
 ```
