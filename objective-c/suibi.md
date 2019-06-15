@@ -214,6 +214,62 @@ scrollView.contentInset = UIEdgeInsetsMake(20, 20, 20, 20);
     }
 }
 ```
++ 限制输入框
+```
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    BOOL result=YES;
+    NSLog(@"editField:%@", string);
+    if(textField.tag == 302){//设置了该框的tag，便于识别是哪个框
+        //超过11位，则限制
+        unsigned long oldStringLength=(unsigned long)textField.text.length;
+        unsigned long newStringLength=(unsigned long)string.length;
+
+        NSLog(@"oldStringLength:%lu, newStringLength:%lu", oldStringLength, newStringLength);//使用apple自带的复制粘贴，会比你复制的字符长度多1，比如复制“12”，则会变成“ 12”
+        if (newStringLength <= 0) {
+            //允许删除操作
+            return YES;
+        }
+        if ((oldStringLength + newStringLength) > 11) {
+            NSLog(@"超过最大长度");
+            return NO;
+        }
+        
+
+        
+        //旧方案
+//        NSCharacterSet *temSet=[NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+//        for (int i=0; i<string.length; ++i) {
+//            NSString *s=[string substringWithRange:NSMakeRange(i, 1)];
+//            NSRange r=[s rangeOfCharacterFromSet:temSet];
+//            if(r.length == 0){
+//                result=NO;
+//                break;
+//            }
+//        }
+        
+        //方案一,一个一个比较
+//        NSString *targetString=@"0123456789";
+//        for (int i=0; i<string.length; ++i) {
+//            NSString *oneWord=[string substringWithRange:NSMakeRange(i, 1)];
+//            if (![targetString  containsString:oneWord]) {
+//                result=NO;
+//            }
+//        }
+        
+        //方案二,characterset
+        NSCharacterSet *digitSet=[NSCharacterSet decimalDigitCharacterSet];
+        NSArray *stringArr=[string componentsSeparatedByCharactersInSet:digitSet];
+        NSString *finishString=[stringArr componentsJoinedByString:@""];
+        NSLog(@"finishString: %@", finishString);
+        if (finishString.length != 0 || ![finishString isEqualToString:@""]) {
+            NSLog(@"输入的内容是非数字字符");
+            result=NO;
+        }
+    }
+    
+    return result;
+}
+```
 ### UISearchBar
 + 搜索框，很容易发生被状态栏和导航栏遮挡的问题，要注意position
 ```
