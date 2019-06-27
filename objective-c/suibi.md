@@ -576,4 +576,8 @@ maksView.alpha = 0.6;
     
     //////////////////////////////////////////////////////end
 ```
++ 设置禁止多点触控
+```
+self.view.multipleTouchEnabled = NO;
+```
 
