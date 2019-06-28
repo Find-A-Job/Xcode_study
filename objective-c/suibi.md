@@ -580,4 +580,23 @@ maksView.alpha = 0.6;
 ```
 self.view.multipleTouchEnabled = NO;
 ```
++ 绘图context
+```
++(UIImage *)chippingImage:(UIImage *)img byRect:(CGRect)r
+{
+    UIGraphicsBeginImageContextWithOptions(r.size, NO, 0.0f);
+    
+    
+    UIBezierPath *path=[UIBezierPath bezierPathWithRect:r];
+    [path addClip];
+    
+    [img drawAtPoint:CGPointZero];
+    
+    UIImage *newImage=UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+```
 
