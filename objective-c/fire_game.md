@@ -1,28 +1,14 @@
-# 火纹游戏编写-随笔<br>
-<br>
-<br>
-+ 一些参数<br>
+# 火纹游戏编写-随笔
+
+
++ 一些参数
 ```
-每个方块单位占15x15像素
+每个方块单位占16x16像素
 iPhone6展示尺寸640x320
 iPhone6的尺寸是667x375，不足的部分用边框遮挡住了
 ```
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
 + 使用的技术
 ```
 //利用【绘图设备】裁剪缩放图形
@@ -61,9 +47,7 @@ iPhone6的尺寸是667x375，不足的部分用边框遮挡住了
     return newImage;
 }
 ```
-<br>
-<br>
-<br>
+
 + 碰到的问题
 ```
 //关于node.position
@@ -77,26 +61,5 @@ newPoint.x          = (int)node.position.x;
 newPoint.y          = (int)node.position.y;
 node.position       = newPoint;
 ```
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
