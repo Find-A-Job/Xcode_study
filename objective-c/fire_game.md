@@ -51,15 +51,18 @@ iPhone6的尺寸是667x375，不足的部分用边框遮挡住了
 + 碰到的问题
 ```
 //关于node.position
-//[SKAction moveBy:CGVectorMake(0, 100) druation:0.1f]
+[SKAction moveBy:CGVectorMake(0, 100) druation:0.1f]
 //node执行完这个动作后，position会变化，这个变化在模拟器和真机上的结果不一致
 //模拟器上，position会整数增加
 //真机上，position会出现小数
 //这时候采取的策略是，每次执行完动画，对position进行取整
-CGPoint newPoint    = node.position;
-newPoint.x          = (int)node.position.x;
-newPoint.y          = (int)node.position.y;
-node.position       = newPoint;
+CGPoint newPoint    = node.position;//1
+newPoint.x          = (int)node.position.x;//2
+newPoint.y          = (int)node.position.y;//3
+node.position       = newPoint;//4
+
+//但是步骤4好像不会执行，需要放在action里执行，但又会导致异步执行步骤4，达不到立即改变position的目的，所以改用以下method
+[SKAction moveTo:CGPoint(node.position.x, node.position.y + 100) druation:0.1f]
 ```
 <br>
 <br>
