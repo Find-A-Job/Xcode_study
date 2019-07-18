@@ -61,6 +61,21 @@ iPhone6的尺寸是667x375，不足的部分用边框遮挡住了
     
     return newImage;
 }
+
+//SKSpriteNode九宫格拉伸
+skspritenode.centerrect= cgrectmake(x, y, width, height);
+-------------------------
+|       |       |       |
+|       |       |       |
+h------------------------
+|       |       |       |
+|       |       |       |
+y------------------------
+|       |       |       |
+|       |       |       |
+A-------x-------w--------
+
+上图A(0, 0)是原点,x和y对应， x到w的距离就是width， y到h的距离就是height
 ```
 
 + 碰到的问题
