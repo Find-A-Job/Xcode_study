@@ -63,7 +63,6 @@ iPhone6的尺寸是667x375，不足的部分用边框遮挡住了
 }
 
 //SKSpriteNode九宫格拉伸
-skspritenode.centerrect= cgrectmake(x, y, width, height);
 -------------------------
 |       |       |       |
 |       |       |       |
@@ -75,7 +74,10 @@ y------------------------
 |       |       |       |
 A-------x-------w--------
 
-上图A(0, 0)是原点,x和y对应， x到w的距离就是width， y到h的距离就是height
+
+SKSpriteNode *ssn= [SKSpriteNode spriteWithImageName:@""];
+ssn.centerRect= CGRectMake(a, b, c, d);
+上图A(0, 0)是原点,a是(A到x的距离)/原图片宽， b是(A到y的距离)/原图片高， c是(x到w的距离)/原图片宽， d是(y到h的距离)/原图片高
 ```
 
 + 碰到的问题
