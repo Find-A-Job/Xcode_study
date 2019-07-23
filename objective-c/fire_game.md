@@ -7,8 +7,11 @@
 iPhone6展示尺寸640x320
 iPhone6的尺寸是667x375，不足的部分用边框遮挡住了
 
-层级zPosition，在spritekit中，不管你在哪个节点下，zposition都是一视同仁
------假设某个节点的zposition是10，他有一个子节点的zposition是9，那么这个子节点会被其父节点遮挡
+层级zPosition，
+-----1，在spritekit中，不管你在哪个节点下，zposition都是一视同仁，并且按照zposition的值排列，这个观点是错误的
+-----2，假设某个节点的zposition是10，他有一个子节点的zposition是9，那么这个子节点会被其父节点遮挡，这个例子是错误的
+-----3，若节点A（zposition=10）和节点B（zposition=20）各有若干个子节点，分别是节点AC（zposition=21），AC2（zposition=22），节点BC（zposition=19），BC2（zposition=22），则其排列如下（0， A， AC， AC2， B， BC， BC2， 99），也就是说，1.节点的z轴位置取决于父节点的z轴位置，2.同一个父节点下的节点才有比较的意义
+-----还没有透彻理解zposition（和node层级之间）的规则
 虚拟按键：99
 人物信息状态栏：88
 地形信息状态栏：88
@@ -33,7 +36,7 @@ iPhone6的尺寸是667x375，不足的部分用边框遮挡住了
 --
 -菜单层：70-79
 
---
+--光标:61
 -光标层：60-69
 
 --army：7
