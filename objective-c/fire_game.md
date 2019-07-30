@@ -53,6 +53,17 @@ iPhone6的尺寸是667x375，不足的部分用边框遮挡住了
 
 + 使用的技术
 ```
+//显示node数量和FPS
+SKView *sv;
+sv.showsFPS= YES;
+sv.showNodeCount= YES;
+
+//去多点触控
+SKScene *ss;
+ss.view.multipleTouchEnabled= NO;
+
+//UIImage是不可变对象，一旦创建就无法修改属性，所以是线程安全的thread-safe
+
 //利用【绘图设备】裁剪缩放图形
 +(UIImage *)chippingImage:(UIImage *)img byRect:(CGRect)r
 {
