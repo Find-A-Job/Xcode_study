@@ -87,18 +87,18 @@ iPhone6的尺寸是667x375，不足的部分用边框遮挡住了
 先把绘图所需的数据计算完成，再进行ui界面绘制，使其两者分离，代码美观简洁
 ```
 ```
-//显示node数量和FPS
+//--显示node数量和FPS--
 SKView *sv;
 sv.showsFPS= YES;
 sv.showNodeCount= YES;
 
-//去多点触控
+//--去多点触控--
 SKScene *ss;
 ss.view.multipleTouchEnabled= NO;
 
 //UIImage是不可变对象，一旦创建就无法修改属性，所以是线程安全的thread-safe
 
-//利用【绘图设备】裁剪缩放图形
+//--利用【绘图设备】裁剪缩放图形--
 +(UIImage *)chippingImage:(UIImage *)img byRect:(CGRect)r
 {
     //获取【绘图设备】，带选项（绘图设备尺寸，是否有不透明度，缩放），具体看apple文档
@@ -151,8 +151,15 @@ SKSpriteNode *ssn= [SKSpriteNode spriteWithImageName:@""];
 ssn.centerRect= CGRectMake(a, b, c, d);
 上图A(0, 0)是原点,a是(A到x的距离)/原图片宽， b是(A到y的距离)/原图片高， c是(x到w的距离)/原图片宽， d是(y到h的距离)/原图片高
 
-//sklabelnode
+//--sklabelnode--
 默认anchor在(0.5, 0)， 也就是中下的位置;
+
+
+//--翻转图片--
+[UIImage imageWithCGImage:image.CGImage scale:image.scale orientation:UIImageOrientationLeftMirrored];
+如果需要一个对原图进行放大并翻转，请先翻转再放大。最后一个参数决定是否翻转（参数可以设置为水平翻转，垂直翻转，旋转）
+UIImageOrientationUpMirrored是水平翻转,例：qp
+
 ```
 
 + 碰到的问题
